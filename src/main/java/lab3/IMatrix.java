@@ -7,5 +7,7 @@ public interface IMatrix {
 
     public int getElementFromVector(int row, int col);
     public void setElementInVector(int row, int col, int value);
+    public void change();
+    public void back();
 
 }

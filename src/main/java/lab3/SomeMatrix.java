@@ -1,7 +1,10 @@
 package lab3;
 
+import java.util.ArrayList;
+
 public abstract class SomeMatrix implements IMatrix {
     private int colsCount, rowsCount;
+    ArrayList<Integer> list;
     protected IVector[] vectors;
     IDrawer drawer;
     protected void drawBorder(int n, int m, int rowCount)
@@ -26,6 +29,18 @@ public abstract class SomeMatrix implements IMatrix {
                 drawValues( this.getElementFromVector(i, j), i, j,this.getRowsCount());
             }
         }
+    }
+    public void change(){
+        list = new ArrayList<>();
+        ColChangerDecorator colChangerDecorator = new ColChangerDecorator(this);
+        RawChangerDecorator rawChangerDecorator = new RawChangerDecorator(colChangerDecorator);
+        list.add(colChangerDecorator.getCol1());list.add(colChangerDecorator.getCol2());
+        list.add(rawChangerDecorator.getRow1());list.add(rawChangerDecorator.getRow2());
+    }
+
+    public void back(){
+        new ColChangerDecorator(new RawChangerDecorator(this, list.get(2), list.get(3)),
+                list.get(0), list.get(1));
     }
     public int getColsCount(){
         return colsCount;

@@ -32,15 +32,19 @@ public abstract class Decorator implements IMatrix {
     public void setElementInVector(int row, int col, int value) {
         matrix.setElementInVector(row, col, value);
     }
+
     public void change(){
-        ColChangerDecorator colChangerDecorator = new ColChangerDecorator(matrix);
+        /*ColChangerDecorator colChangerDecorator = new ColChangerDecorator(matrix);
         RawChangerDecorator rawChangerDecorator = new RawChangerDecorator(colChangerDecorator);
         list.add(colChangerDecorator.getCol1());list.add(colChangerDecorator.getCol2());
-        list.add(rawChangerDecorator.getRow1());list.add(rawChangerDecorator.getRow2());
+        list.add(rawChangerDecorator.getRow1());list.add(rawChangerDecorator.getRow2());*/
+        matrix.change();
 
     }
-    public void back(IMatrix matrix){
-        new ColChangerDecorator(new RawChangerDecorator(matrix, list.get(2), list.get(3)),
-                list.get(0), list.get(1));
+
+    public void back(){
+        /*new ColChangerDecorator(new RawChangerDecorator(matrix, list.get(2), list.get(3)),
+                list.get(0), list.get(1));*/
+        matrix.back();
     }
 }

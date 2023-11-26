@@ -7,14 +7,12 @@ public class PanelDraw implements IDrawer {
     private static int changer = 6;
     private int counter = 0;
     private int bCounter = 0;
-    ArrayList<JLabel> valueLabels = new ArrayList<>();
-    ArrayList<JLabel> borderLabels = new ArrayList<>();
+    private ArrayList<JLabel> valueLabels = new ArrayList<>();
+    private ArrayList<JLabel> borderLabels = new ArrayList<>();
     MatrixPanel matrixPanel = new MatrixPanel();
 
   public PanelDraw(){
-
       DrawPlace.panelMaker(matrixPanel);
-
     }
     public static int getChanger(){
         return changer;
@@ -24,7 +22,6 @@ public class PanelDraw implements IDrawer {
     public void drawBorder(int n, int m, int rowCount) {
         borderLabels.add(new JLabel("|"));
         borderLabels.add(new JLabel("|"));
-
         borderLabels.get(bCounter*2).setBounds(100+m*10*changer+ 2*m,(200+n*12),4,10);
         borderLabels.get(bCounter*2+1).setBounds
                 (100+m*10*changer+ 2*m + 70,(200+n*12),4,10);
@@ -44,9 +41,7 @@ public class PanelDraw implements IDrawer {
                     (100 + m * 11 * changer + 25, (200 + n * 12), 50, 10);
             matrixPanel.add(valueLabels.get(counter));
             counter++;
-
             matrixPanel.repaint();
-
         }
     }
 }

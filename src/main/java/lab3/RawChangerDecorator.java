@@ -31,10 +31,19 @@ public class RawChangerDecorator extends Decorator{
 
     public RawChangerDecorator(IMatrix matrix, int row1, int row2) {
         super(matrix);
-
-
+        ArrayList<Integer> row1List = new ArrayList<>();
+        for (int i = 0; i < matrix.getColsCount(); i++) {
+            row1List.add(matrix.getElementFromVector(row1,i));
+            matrix.setElementInVector(row1,i,matrix.getElementFromVector(row2,i));
+            matrix.setElementInVector(row2,i,row1List.get(i));
+        }
     }
-    public void change(){
+    /*public void change(){
+        Random random = new Random();
+        row1 = random.nextInt(matrix.getColsCount()-1);
+        while (row1 == row2){
+            row2 = random.nextInt(matrix.getColsCount()-1);
+        }
         ArrayList<Integer> row1List = new ArrayList<>();
         for (int i = 0; i < matrix.getColsCount(); i++) {
             row1List.add(matrix.getElementFromVector(row1,i));
@@ -49,5 +58,5 @@ public class RawChangerDecorator extends Decorator{
             matrix.setElementInVector(row1, i, matrix.getElementFromVector(row2, i));
             matrix.setElementInVector(row2, i, row1List.get(i));
         }
-    }
+    }*/
 }

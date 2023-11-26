@@ -38,7 +38,5 @@ public class ColChangerDecorator extends Decorator{
             matrix.setElementInVector(i,col1,matrix.getElementFromVector(i,col2));
             matrix.setElementInVector(i,col2,col1List.get(i));
         }
-
     }
-
 }

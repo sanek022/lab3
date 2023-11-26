@@ -2,16 +2,18 @@ package lab3;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DrawPlace {
     private static final JFrame frame = new JFrame("Matrix");
-    private static JCheckBox lineCheckBox = new JCheckBox("Draw line");
-    private static JCheckBox consoleCheck = new JCheckBox("Console");
-    private static JCheckBox panelCheck = new JCheckBox("Panel");
-    private static JButton regMatrix = new JButton("RegMatrix");
-    private static JButton spMatrix = new JButton("SpMatrix");
-    private static JButton changeMatrix = new JButton("Change");
-    private static JButton backMatrix = new JButton("Back");
+    private static final JCheckBox lineCheckBox = new JCheckBox("Draw line");
+    private static final JCheckBox consoleCheck = new JCheckBox("Console");
+    private static final JCheckBox panelCheck = new JCheckBox("Panel");
+    private static final JButton regMatrix = new JButton("RegMatrix");
+    private static final JButton spMatrix = new JButton("SpMatrix");
+    private static final JButton changeMatrix = new JButton("Change");
+    private static final JButton backMatrix = new JButton("Back");
     private static boolean sp = false;
 
 
@@ -29,7 +31,8 @@ public class DrawPlace {
         frame.add(lineCheckBox);frame.add(consoleCheck);frame.add(panelCheck);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        IMatrix matrixAll;
+        IMatrix iMatrix;
+
         regMatrix.addActionListener(a -> {
             sp = false;
             if(consoleCheck.isSelected()){
@@ -42,11 +45,19 @@ public class DrawPlace {
                 }
                 matrix.draw();
                 changeMatrix.addActionListener(b->{
-                    new ColChangerDecorator(new RawChangerDecorator(matrix, 0,2), 1,3);
+                   /* new ColChangerDecorator(new RawChangerDecorator(matrix, 0,2), 1,3);*/
+                   /* new RawChangerDecorator(new ColChangerDecorator(matrix));*/
+                    matrix.change();
+                    System.out.println();
                     System.out.println();
                     matrix.draw();
                 });
-
+                backMatrix.addActionListener(c ->{
+                    matrix.back();
+                    System.out.println();
+                    System.out.println();
+                    matrix.draw();
+                });
             }
             if(panelCheck.isSelected()){
                 IDrawer drawer1 = new PanelDraw();
@@ -57,6 +68,16 @@ public class DrawPlace {
                     throw new RuntimeException(e);
                 }
                 matrix1.draw();
+                changeMatrix.addActionListener(b->{
+                    /* new ColChangerDecorator(new RawChangerDecorator(matrix, 0,2), 1,3);*/
+                    /* new RawChangerDecorator(new ColChangerDecorator(matrix));*/
+                    matrix1.change();
+                    matrix1.draw();
+                });
+                backMatrix.addActionListener(c ->{
+                    matrix1.back();
+                    matrix1.draw();
+                });
             }
         });
         spMatrix.addActionListener(a -> {
@@ -70,6 +91,20 @@ public class DrawPlace {
                     throw new RuntimeException(e);
                 }
                 matrix.draw();
+                changeMatrix.addActionListener(b->{
+                    /* new ColChangerDecorator(new RawChangerDecorator(matrix, 0,2), 1,3);*/
+                    /* new RawChangerDecorator(new ColChangerDecorator(matrix));*/
+                    matrix.change();
+                    System.out.println();
+                    System.out.println();
+                    matrix.draw();
+                });
+                backMatrix.addActionListener(c ->{
+                    matrix.back();
+                    System.out.println();
+                    System.out.println();
+                    matrix.draw();
+                });
             }
             if(panelCheck.isSelected()){
                 IDrawer drawer1 = new PanelDraw();
