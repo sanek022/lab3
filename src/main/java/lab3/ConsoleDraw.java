@@ -13,6 +13,7 @@ public class ConsoleDraw  implements IDrawer {
             System.out.println();
             System.out.print("|");
         }
+
     }
 
     @Override
@@ -21,11 +22,12 @@ public class ConsoleDraw  implements IDrawer {
             System.out.print(String.format("%3s ", " "));
         }else {
             System.out.print(String.format("%3d ", val));
-            if (!DrawPlace.lineIsSelected()) {
-                if (rowCount - 1 == m)
-                    System.out.println();
-            }
         }
+        if (!DrawPlace.lineIsSelected() && (rowCount - 1 == m)) {
+            System.out.println();
+        }
+        if(m == rowCount-1 && n == rowCount-1)
+            System.out.println();
     }
 
 }
