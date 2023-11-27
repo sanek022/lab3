@@ -31,7 +31,6 @@ public class DrawPlace {
         frame.add(lineCheckBox);frame.add(consoleCheck);frame.add(panelCheck);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        IMatrix iMatrix;
 
         regMatrix.addActionListener(a -> {
             sp = false;
@@ -67,14 +66,17 @@ public class DrawPlace {
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
+                PanelDraw.getMatrixPanel().removeAll();
                 matrix1.draw();
                 changeMatrix.addActionListener(b->{
                     /* new ColChangerDecorator(new RawChangerDecorator(matrix, 0,2), 1,3);*/
                     /* new RawChangerDecorator(new ColChangerDecorator(matrix));*/
+                    PanelDraw.getMatrixPanel().removeAll();
                     matrix1.change();
                     matrix1.draw();
                 });
                 backMatrix.addActionListener(c ->{
+                    PanelDraw.getMatrixPanel().removeAll();
                     matrix1.back();
                     matrix1.draw();
                 });
@@ -115,6 +117,18 @@ public class DrawPlace {
                     throw new RuntimeException(e);
                 }
                 matrix1.draw();
+                changeMatrix.addActionListener(b->{
+                    /* new ColChangerDecorator(new RawChangerDecorator(matrix, 0,2), 1,3);*/
+                    /* new RawChangerDecorator(new ColChangerDecorator(matrix));*/
+                    PanelDraw.getMatrixPanel().removeAll();
+                    matrix1.change();
+                    matrix1.draw();
+                });
+                backMatrix.addActionListener(c ->{
+                    PanelDraw.getMatrixPanel().removeAll();
+                    matrix1.back();
+                    matrix1.draw();
+                });
             }
         });
     }
@@ -123,9 +137,6 @@ public class DrawPlace {
         return lineCheckBox.isSelected();
     }
 
-    public static boolean getRegMatrix() {
-        return regMatrix.isSelected();
-    }
 
     public  static boolean getSpMatrix() {
         return sp;

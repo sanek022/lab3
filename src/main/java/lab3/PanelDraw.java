@@ -9,9 +9,13 @@ public class PanelDraw implements IDrawer {
     private int bCounter = 0;
     private ArrayList<JLabel> valueLabels = new ArrayList<>();
     private ArrayList<JLabel> borderLabels = new ArrayList<>();
-    MatrixPanel matrixPanel = new MatrixPanel();
+    static MatrixPanel matrixPanel = new MatrixPanel();
 
-  public PanelDraw(){
+    public static MatrixPanel getMatrixPanel() {
+        return matrixPanel;
+    }
+
+    public PanelDraw(){
       DrawPlace.panelMaker(matrixPanel);
     }
     public static int getChanger(){
@@ -33,16 +37,18 @@ public class PanelDraw implements IDrawer {
 
     @Override
     public void drawValues(int val, int n, int m, int rowCount) {
+        if(n == 0 && m == 0)
+            PanelDraw.getMatrixPanel().removeAll();
         if(DrawPlace.getSpMatrix() && (val == 0)){
-            valueLabels.add(new JLabel( " "));
+            valueLabels.add(new JLabel( "   "));
         }else {
             valueLabels.add(new JLabel(String.valueOf(val)));
-            valueLabels.get(counter).setBounds
-                    (100 + m * 11 * changer + 25, (200 + n * 12), 50, 10);
-            matrixPanel.add(valueLabels.get(counter));
-            counter++;
-            matrixPanel.repaint();
         }
+        valueLabels.get(counter).setBounds
+                (100 + m * 11 * changer + 25, (200 + n * 12), 50, 10);
+        matrixPanel.add(valueLabels.get(counter));
+        counter++;
+        matrixPanel.repaint();
     }
 }
 class MatrixPanel extends JPanel{
