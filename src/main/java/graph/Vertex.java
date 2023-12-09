@@ -1,10 +1,10 @@
 package graph;
 
-public class Vertex {
-    private int x;
-    private int y;
+public class Vertex implements Cloneable {
+    private double x;
+    private double y;
     private int number;
-    public Vertex(int number,int x, int y){
+    public Vertex(int number,double x, double y){
         this.x = x;
         this.y = y;
         this.number = number;
@@ -19,7 +19,7 @@ public class Vertex {
                 '}';
     }
 
-    public Vertex(int x, int y){
+    public Vertex(double x, double y){
         this.x = x;
         this.y = y;
     }
@@ -32,19 +32,29 @@ public class Vertex {
         return number;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
+    }
+
+    @Override
+    public Vertex clone() {
+        try {
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return (Vertex) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

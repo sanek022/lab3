@@ -7,9 +7,9 @@ public class ConsoleDraw  implements IDrawer {
     }
 
     @Override
-    public void drawBorder( int n, int m, int rowCount) {
+    public void drawBorder( int row, int col, int rowCount) {
         System.out.print("|");
-        if(m == 0 && n !=0){
+        if(col == 0 && row !=0){
             System.out.println();
             System.out.print("|");
         }
@@ -17,16 +17,16 @@ public class ConsoleDraw  implements IDrawer {
     }
 
     @Override
-    public void drawValues(int val, int n, int m, int rowCount) {
+    public void drawValues(int val, int row, int col, int rowCount) {
         if(DrawPlace.getSpMatrix() && (val == 0)){
             System.out.print(String.format("%3s ", " "));
         }else {
             System.out.print(String.format("%3d ", val));
         }
-        if (!DrawPlace.lineIsSelected() && (rowCount - 1 == m)) {
+        if (!DrawPlace.lineIsSelected() && (rowCount - 1 == col)) {
             System.out.println();
         }
-        if(m == rowCount-1 && n == rowCount-1)
+        if(col == rowCount-1 && row == rowCount-1)
             System.out.println();
     }
 
