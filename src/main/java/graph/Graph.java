@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class Graph {
     private ArrayList<Vertex> vertices;
-    private ArrayList<Rib> ribs;
-    public Graph(ArrayList<Vertex> vertices, ArrayList<Rib> ribs){
+    private ArrayList<MyVector> myVectors;
+    public Graph(ArrayList<Vertex> vertices, ArrayList<MyVector> myVectors){
         this.vertices = vertices;
-        this.ribs = ribs;
+        this.myVectors = myVectors;
     }
 
 
     @Override
     public String toString() {
         return "Graph{" +
-                "ribs=" + ribs +
+                "ribs=" + myVectors +
                 '}';
     }
 }

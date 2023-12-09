@@ -2,13 +2,12 @@ package graph;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 public class Maker {
     private int square;
     private ArrayList<Vertex> vertices = new ArrayList<>();
-    private ArrayList<Rib> ribs = new ArrayList<>();
+    private ArrayList<MyVector> myVectors = new ArrayList<>();
     private Map<Integer,ArrayList<Integer>> matrix = new HashMap<>();
     private int number;
     private Graph graph;
@@ -21,8 +20,8 @@ public class Maker {
         return vertices.get(index);
     }
 
-    public ArrayList<Rib> getRibs() {
-        return ribs;
+    public ArrayList<MyVector> getRibs() {
+        return myVectors;
     }
 
     public int getMatrix(int key, int index) {
@@ -40,11 +39,10 @@ public class Maker {
     public Maker() throws FileNotFoundException {
         graphMaker();
     }
-    private Graph graphMaker() throws FileNotFoundException {
+    private void graphMaker() throws FileNotFoundException {
         vertexMaker();
         ribMaker();
-        graph = new Graph(vertices,ribs);
-        return graph ;
+        graph = new Graph(vertices, myVectors);
     }
     public void vertexMaker() throws FileNotFoundException {
 
@@ -52,7 +50,7 @@ public class Maker {
         Scanner scanner = new Scanner(fileReader);
         number = scanner.nextInt();
         for (int i = 0; i < number; i++) {
-            vertices.add(new Vertex(i,scanner.nextInt(), scanner.nextInt()));
+            vertices.add(new Vertex(i,scanner.nextDouble(), scanner.nextDouble()));
         }
         //System.out.println(vertices);
         square = scanner.nextInt();
@@ -61,7 +59,7 @@ public class Maker {
             ArrayList<Integer> list = new ArrayList<>();
             matrix.put(i,list);
             for (int j = 0; j < number; j++) {
-                    matrix.get(i).add(j);
+                    matrix.get(i).add(scanner.nextInt());
             }
         }
         //System.out.println(matrix);
@@ -81,7 +79,7 @@ public class Maker {
     }
     public void ribMaker(){
         for (int i = 0; i < vertices.size()-1; i++) {
-           ribs.add(new Rib(vertices.get(i), vertices.get(i+1)));
+           myVectors.add(new MyVector(vertices.get(i), vertices.get(i+1)));
         }
     }
 }
