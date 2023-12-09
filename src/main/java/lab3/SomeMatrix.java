@@ -7,14 +7,14 @@ public abstract class SomeMatrix implements IMatrix {
     ArrayList<Integer> list;
     protected IVector[] vectors;
     IDrawer drawer;
-    protected void drawBorder(int n, int m, int rowCount)
+    protected void drawBorder(int row, int col, int rowCount)
     {
-        drawer.drawBorder(n, m, rowCount);
+        drawer.drawBorder(row, col, rowCount);
     }
 
-    protected void drawValues(int val, int n, int m, int rowsCount)
+    protected void drawValues(int val, int row, int col, int rowsCount)
     {
-       drawer.drawValues(val, n, m, rowsCount);
+       drawer.drawValues(val, row, col, rowsCount);
     }
     public void draw(){
 
