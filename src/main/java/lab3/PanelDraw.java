@@ -29,7 +29,7 @@ public class PanelDraw implements IDrawer {
         borderLabels.add(new JLabel("|"));
         borderLabels.get(bCounter*2).setBounds(100+col*10*changer+ 2*col,(200+row*12),4,10);
         borderLabels.get(bCounter*2+1).setBounds
-                (100+col*10*changer+ 2*col + 70,(200+row*12),4,10);
+                (100+col*10*changer+ 2*col + 55,(200+row*12),4,10);
         matrixPanel.add(borderLabels.get(bCounter*2));
         matrixPanel.add(borderLabels.get(bCounter*2 + 1));
         bCounter++;

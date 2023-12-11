@@ -91,10 +91,12 @@ class RegularMatrix extends SomeMatrix {
 
 }
 class SparseMatrix extends SomeMatrix {
-
-    public SparseMatrix(int rows, int cols)  { super(rows, cols);}
-    public SparseMatrix(int rows, int cols, IDrawer drawer){super(rows, cols, drawer);}
+       public SparseMatrix(int rows, int cols)  { super(rows, cols);}
+    public SparseMatrix(int rows, int cols, IDrawer drawer){
+        super(rows, cols, drawer);
+    }
     public SparseMatrix(IDrawer drawer)  { super(drawer);}
     public IVector create(int size) {return new SparseVector(size);}
+
 }
 
